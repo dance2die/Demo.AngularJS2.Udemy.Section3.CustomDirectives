@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {UnlessDirective} from "./unless.directive";
 
 
 @Component({
@@ -39,8 +40,18 @@ import {Component} from 'angular2/core';
                 <template ngSwitchDefault><span style="color: red">Don't know that color</span></template>
             </div>
         </section>
+        <section class="directive">
+            <h2>Custom Directive: *myUnless</h2>
+            <div>
+                Enter true or false
+                <br />
+                <input type="text" #condition (keyup)="0">
+            </div>
+            <div *myUnless="condition.value != 'false'">Only show if 'false' was entered!</div>
+        </section>
 
-    `
+    `,
+    directives: [UnlessDirective]
 })
 export class StructuralDirectives {
     list = ['Apple', 'Milk', 'Bread'];
